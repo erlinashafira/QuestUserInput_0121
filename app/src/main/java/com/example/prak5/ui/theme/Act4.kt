@@ -3,9 +3,11 @@ package com.example.prak5.ui.theme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.material3.Button
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -18,14 +20,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.dp
+import com.example.prak5.R
 
 @Composable
 fun FormDataDiri(modifier: Modifier){
     var textNama by remember { mutableStateOf(value = "") }
-    var textAlamat by remember (mutableStateOf(value = "") }
-    var textJK by remember (mutableStateOf(value = "") }
+    var textAlamat by remember { mutableStateOf(value = "") }
+    var textJK by remember { mutableStateOf(value = "") }
     val gender:List<String> = listOf("Laki-laki","Perempuan")
 
     var nama by remember { mutableStateOf(value = "") }
@@ -35,7 +39,7 @@ fun FormDataDiri(modifier: Modifier){
     Column(modifier = Modifier.padding(top = 50.dp),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally) {
-
+        
         }
     OutlinedTextField(
         value = textNama,
@@ -95,4 +99,29 @@ fun FormDataDiri(modifier: Modifier){
             alamat=textAlamat
         }
     )
+        Text(stringResource(id = R.string.submit))
+}
+    HorizontalDivider(
+        modifier = Modifier.padding(
+            bottom =
+                dimensionResource(id = R.dimen.padding_medium),
+                top = dimensionResource(
+                id = R.dimen.padding_medium
+        )
+        ),
+        thickness = dimensionResource(id = R.dimen.divider_tipis),
+        color = Color.DarkGray
+    )
+
+        ElevatedCard (
+            elevation = CardDeafaults.cardElevation(defaultElevation = 10.dp),
+            colors = CardDefaults.cardColors(containerColor = Color.Black),
+            modifier = Modifier
+                .height(100.dp
+                .width(300.dp
+                )){
+
+                }
+        )
+
 
