@@ -34,7 +34,9 @@ fun FormDataDiri(modifier: Modifier){
 
     Column(modifier = Modifier.padding(top = 50.dp),
         verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alingment.CenterHorizontally) {
+        horizontalAlignment = Alignment.CenterHorizontally) {
+
+        }
     OutlinedTextField(
         value = textNama,
         singleLine = true,
@@ -80,6 +82,17 @@ fun FormDataDiri(modifier: Modifier){
             top = dimensionResource(
                 id = R.dimen.padding_medium
             )
-        )
+        ),
+        thickness = dimensionResource(id = R.dimen.divider_tipis),
+        color = Color.DarkGray
+    )
+    Button(
+        modifier = Modifier.fillMaxWidth(fraction = if),
+        enabled = textAlamat.isNotEmpty(),
+        onClick = {
+            nama=textNama
+            jenis=textJK
+            alamat=textAlamat
+        }
     )
 
