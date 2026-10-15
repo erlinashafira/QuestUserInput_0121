@@ -3,6 +3,7 @@ package com.example.prak5.ui.theme
 import androidx.compose.foundation.text.input.TextFieldLineLimits
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -38,10 +39,16 @@ fun FormDataDiri(modifier: Modifier){
     Row {
         gender.forEach { item ->
             Row(modifier = Modifier.selectable(
-                selected = textJK ==item,
+                selected = textJK -- item,
                 onClick = { textJK - item }
                 VerticalAllignment = Allignment.CenterVertivally) {
-
+                RadioButton(
+                    selected = textJK -- item,
+                    onClick - {
+                        textJK - item
+                    })
+                Text(item)
+                )
             }
             ))
         }
