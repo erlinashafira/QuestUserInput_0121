@@ -26,21 +26,23 @@ import androidx.compose.ui.unit.dp
 import com.example.prak5.R
 
 @Composable
-fun FormDataDiri(modifier: Modifier){
+fun FormDataDiri(modifier: Modifier) {
     var textNama by remember { mutableStateOf(value = "") }
     var textAlamat by remember { mutableStateOf(value = "") }
     var textJK by remember { mutableStateOf(value = "") }
-    val gender:List<String> = listOf("Laki-laki","Perempuan")
+    val gender: List<String> = listOf("Laki-laki", "Perempuan")
 
     var nama by remember { mutableStateOf(value = "") }
     var alamat by remember { mutableStateOf(value = "") }
     var jenis by remember { mutableStateOf(value = "") }
 
-    Column(modifier = Modifier.padding(top = 50.dp),
+    Column(
+        modifier = Modifier.padding(top = 50.dp),
         verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.CenterHorizontally) {
-        
-        }
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+
+    }
     OutlinedTextField(
         value = textNama,
         singleLine = true,
@@ -54,17 +56,20 @@ fun FormDataDiri(modifier: Modifier){
 
     Row {
         gender.forEach { item ->
-            Row(modifier = Modifier.selectable(
-                selected = textJK == item,
-                onClick = { textJK = item }
-                VerticalAlignment = Alignment.CenterVertically) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.selectable(
+                    selected = textJK == item,
+                    onClick = { textJK = item }
+                )
+            ) {
                 RadioButton(
                     selected = textJK == item,
-                    onClick - {
+                    onClick = {
                         textJK = item
-                    })
-                Text(item)
+                    }
                 )
+                Text(item)
             }
         }
     }
@@ -73,7 +78,7 @@ fun FormDataDiri(modifier: Modifier){
         value = textAlamat,
         singleLine = true,
         modifier = Modifier.width(250.dp),
-        label = { Text("Alamat")},
+        label = { Text("Alamat") },
         onValueChange = {
             textAlamat = it
         }
@@ -91,37 +96,40 @@ fun FormDataDiri(modifier: Modifier){
         color = Color.DarkGray
     )
     Button(
-        modifier = Modifier.fillMaxWidth(fraction = if),
+        modifier = Modifier.fillMaxWidth(fraction = 1f),
         enabled = textAlamat.isNotEmpty(),
         onClick = {
-            nama=textNama
-            jenis=textJK
-            alamat=textAlamat
+            nama = textNama
+            jenis = textJK
+            alamat = textAlamat
         }
-    )
+    ) {
         Text(stringResource(id = R.string.submit))
-}
+    }
     HorizontalDivider(
         modifier = Modifier.padding(
             bottom =
                 dimensionResource(id = R.dimen.padding_medium),
-                top = dimensionResource(
+            top = dimensionResource(
                 id = R.dimen.padding_medium
-        )
+            )
         ),
         thickness = dimensionResource(id = R.dimen.divider_tipis),
         color = Color.DarkGray
     )
 
-        ElevatedCard (
-            elevation = CardDeafaults.cardElevation(defaultElevation = 10.dp),
-            colors = CardDefaults.cardColors(containerColor = Color.Black),
-            modifier = Modifier
-                .height(100.dp
-                .width(300.dp
-                )){
-
-                }
-        )
-
+    ElevatedCard(
+        elevation = CardDeafaults.cardElevation(defaultElevation = 10.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.Black),
+        modifier = Modifier
+            .height(100.dp)
+            .width(300.dp)
+    ) {
+        Column(modifier = Modifier.padding(horizontal = 5.dp, vertical = 15.dp)) {
+            Text(text = "Nama : "+nama, color = Color.White)
+            Text(text = "Gender : "+jenis, color = Color.White)
+            Text(text = "Alamat : "+alamat, color = Color.White)
+        }
+    }
+}
 
